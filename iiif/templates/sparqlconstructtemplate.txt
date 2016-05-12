@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {?manifest <http://iiif.io/api/presentation/2#hasSequences> _:c14n0 .
+  _:c14n0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> ?sequence .
+  ?sequence <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Sequence> .
+  ?sequence <http://iiif.io/api/presentation/2#hasCanvases> _:c14n1 .
+_:c14n1 rdf:first ?firstcanvas .
+_:c14n1 rdf:rest _:c14n2 .
+_:c14n2 rdf:first ?nextcanvas .
+_:c14n1 rdf:rest _:c14n3 .
+_:c14n3 rdf:first ?nextcanvas2
+  
+} WHERE {<http://localhost:8080/fcrepo/rest/collection/blumenbach-editions> <http://iiif.io/api/presentation/2#hasManifests> ?manifest .
+?manifest <http://iiif.io/api/presentation/2#hasSequences> ?seqlist .
+?seqlist <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> ?sequence .
+?sequence <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Sequence> .
+?sequence <http://iiif.io/api/presentation/2#hasCanvases> ?canvaslist .
+?canvaslist rdf:first ?firstcanvas .
+?canvaslist rdf:rest ?nextlist .
+?nextlist rdf:first ?nextcanvas .
+?nextlist rdf:rest ?nextlist2 .
+?nextlist2 rdf:first ?nextcanvas2}

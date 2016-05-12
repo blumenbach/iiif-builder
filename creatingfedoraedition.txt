@@ -78,3 +78,24 @@ curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@002.t
 12. Create sequences
 Use the script build/sequence_metadata.php
 append prefixes and SPARQL statement in output file (sequence.ttl)
+
+13. Patch sequence object
+default sequence has path "http://localhost:8080/fcrepo/rest/edition/00027/sequence/normal"
+Example:
+curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@sequence.ttl" "http://localhost:8080/fcrepo/rest/edition/00027/sequence/normal"
+
+14. Create Ranges
+
+15. Create Manifest Object
+curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/manifest"
+
+16. Patch manifest metadata
+curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@manifest.ttl" "http://localhost:8080/fcrepo/rest/edition/00027/manifest"
+
+17. Create collection and subcollection objects
+curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection/top"
+curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection/blumenbach-editions"
+curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection/blumenbach-objects"
+
+18. Patch collection metadata
+curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@collection.ttl" "http://localhost:8080/fcrepo/rest/collection/top"
