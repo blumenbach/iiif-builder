@@ -23,7 +23,7 @@ function buildStatement($seq) {
         $third = str_pad($second+1, 3, "0", STR_PAD_LEFT);
         $id = str_pad($count++, 3, "0", STR_PAD_LEFT);
         $fp = fopen("./sequence.ttl", "a");
-        $out = getFirst($third) . " <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/blumenbach/00027/canvas/c$id> .\n".
+        $out = getFirst($third) . " <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/00027/canvas/c$id> .\n".
         getFirst($third) . " <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c$third .\n";
         fwrite($fp, $out);
     }
