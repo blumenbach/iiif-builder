@@ -1,17 +1,17 @@
 Prerequisites:
 1. fcrepo serialization should be installed in karaf.  and enable saving binaries to a directory accessible to djatoka (/media/fcrepo).
 
-Creating IIIF Digital Editions in Fedora
+Creating IIIF Digital edition in Fedora
 
 1. Create Containers in Fedora for the edition objects: 
-root: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027"
-canvas: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/canvas"
-sequence: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/sequence"
-annotation: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/annotation"
-list: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/list"
-range: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/range"
-layer: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/layer"
-content: curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/res"
+root: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027"
+canvas: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/canvas"
+sequence: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/sequence"
+annotation: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/annotation"
+list: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/list"
+range: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/range"
+layer: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/layer"
+content: curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/res"
 
 2. stage TIFF files in a CLI accessible directory. (/media/staged/00027)
 Create upload script with this process.
@@ -26,20 +26,20 @@ open mv.sh in Oxygen
 3. Upload binaries to Fedora res container
 d: add curl command with this regex:
 Find: mv 00000(\d{3}.tif) .+?(tif)
-Replace: curl -X PUT --upload-file $1 -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/editions/00027/res/$1"
+Replace: curl -X PUT --upload-file $1 -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/edition/00027/res/$1"
 save as upload.sh, chmod 755 upload.sh, ./upload.sh
 
-4. create res metadata
+4. create res ttl
 check image dimensions (i.e. 2112 x 3314)
 use the script res_metadata.sh by piping in the ids of all of the files.  Create the batch script:
 ls > list.txt
 open list.txt 
 Find: (.+?)(.tif)\n
 Replace: ./res_metadata.sh $1\n
-save as build_metadata_ttl.sh
+save as build_res_ttl.sh
 
 5. Patch binary metadata
-curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@005.ttl" "http://localhost:8080/fcrepo/rest/editions/00027/res/005.tif/fcr:metadata"
+curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@005.ttl" "http://localhost:8080/fcrepo/rest/edition/00027/res/005.tif/fcr:metadata"
 If a property exists, you must first delete it before you use SPARQL update!
 Example:
 DELETE { 
@@ -49,21 +49,32 @@ DELETE {
 
 6. Create xml file descriptors
 file descriptor has one element <id>{edition_id}/001</id> that is used by the IIIF server for the URI
-use build_descriptors.sh then move the descriptors into the binary directory (/media/fcrepo/editions/{edition_id}/res
+use build_descriptors.sh then move the descriptors into the binary directory (/media/fcrepo/edition/{edition_id}/res
 
 7. Ingest images into Djatoka
 curl -s 'http://localhost:8888/ingest?unattended=true'
 
 8. Create list objects
-Each list object will eventually contain all of the metadata about an image resource (perhaps a pointer to the TEI).
+Each list object will eventually contain the metadata about an image resource (perhaps a pointer to the TEI).
 The lists must preceed the creation of the canvas.
 Example:
-curl -i -X PUT "http://localhost:8080/fcrepo/rest/editions/00027/list/l001"
-URI pattern: http://localhost:8080/fcrepo/rest/editions/{edition_id}/list/l{list_id}
+curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/00027/list/l001"
+URI pattern: http://localhost:8080/fcrepo/rest/edition/{edition_id}/list/l{list_id}
 Use create_list_objects.sh script
 
 9. Create canvas objects
 This is the same as the list creation.
-URI pattern: http://localhost:8080/fcrepo/rest/editions/{edition_id}/canvas/c{canvas_id}
+URI pattern: http://localhost:8080/fcrepo/rest/edition/{edition_id}/canvas/c{canvas_id}
 
-10.
+10. create canvas ttl
+same as step 4 but use ./canvas_metadata.sh
+save as build_canvas_ttl.sh
+
+11. Patch canvas metadata
+use script update_canvas_metadata.sh
+Example:
+curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@002.ttl" "http://localhost:8080/fcrepo/rest/edition/00027/canvas/c002"
+
+12. Create sequences
+Use the script build/sequence_metadata.php
+append prefixes and SPARQL statement in output file (sequence.ttl)
