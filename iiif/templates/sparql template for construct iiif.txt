@@ -1,0 +1,48 @@
+PREFIX blume: <http://purl.org/vocab/blumenbach#>
+PREFIX br: <http://localhost:8080/fcrepo/rest/bb8/>
+PREFIX ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sc: <http://iiif.io/api/presentation/2#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX exif: <http://www.w3.org/2003/12/exif/ns#>
+
+CONSTRUCT {?manifest <http://iiif.io/api/presentation/2#hasSequences> _:c14n2 .
+?manifest <http://purl.org/dc/terms/isPartOf> ?collection .
+?manifest <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Manifest> .
+?manifest <http://www.w3.org/2000/01/rdf-schema#label> ?label .
+?canvas <http://iiif.io/api/presentation/2#hasImageAnnotations> _:c14n4 .
+?canvas <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Canvas> .
+?canvas <http://www.w3.org/2000/01/rdf-schema#label> ?label .
+?canvas <http://www.w3.org/2003/12/exif/ns#height> ?height.
+?canvas <http://www.w3.org/2003/12/exif/ns#width> ?width .
+?resource <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/dcmitype/Image> .
+?resource <http://www.w3.org/2003/12/exif/ns#height> ?rheight .
+?resource <http://www.w3.org/2003/12/exif/ns#width> ?rwidth .
+_:c14n0 <http://iiif.io/api/presentation/2#hasCanvases> _:c14n1 .
+_:c14n0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Sequence> .
+_:c14n1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> ?canvas .
+_:c14n1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n0 .
+_:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:c14n3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/oa#Annotation> .
+_:c14n3 <http://www.w3.org/ns/oa#hasBody> ?resource .
+_:c14n3 <http://www.w3.org/ns/oa#hasTarget> ?canvas .
+_:c14n3 <http://www.w3.org/ns/oa#motivatedBy> <http://iiif.io/api/presentation/2#painting> .
+_:c14n4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n3 .
+_:c14n4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>} 
+WHERE {?manifest <http://purl.org/dc/terms/isPartOf> <http://localhost:8080/fcrepo/rest/blumenbach/collection/editions> .
+  ?manifest rdfs:label ?label .
+ ?manifest <http://iiif.io/api/presentation/2#hasSequences> ?sequid .   
+  ?sequid rdf:first ?sequence . 
+  ?sequence sc:hasCanvases ?canvasuid .
+  ?canvasuid rdf:first ?canvas .
+  ?canvas sc:hasImageAnnotations ?noteuid.
+  ?canvas exif:height ?height .
+  ?canvas exif:width ?width .
+  ?noteuid rdf:first ?annotation .
+?annotation oa:hasBody ?resource .
+?resource exif:height ?rheight .
+?resource exif:width ?rwidth}

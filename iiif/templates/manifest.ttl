@@ -1,0 +1,24 @@
+<> <http://iiif.io/api/presentation/2#attributionLabel> "Provided by Akademie der Wissenschaften zu Göttingen"  .
+<> <http://iiif.io/api/presentation/2#hasRanges> _:c14n19 .
+_:c14n19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/blumenbach/0001/range/r1> .
+_:c14n19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://iiif.io/api/presentation/2#hasSequences> _:c14n10 .
+_:c14n10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/blumenbach/0001/sequence/normal> .
+_:c14n10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://iiif.io/api/presentation/2#metadataLabels> _:c14n13 .
+_:c14n13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n4 .
+    _:c14n4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "J.F. Blumenbach"  .
+        _:c14n4 <http://www.w3.org/2000/01/rdf-schema#label> "Author"  .
+_:c14n13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c14n8 .
+_:c14n8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n17 .
+_:c14n17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "Göttingen: 1788"@en .
+    _:c14n17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "Göttingen: 1788"@fr .
+_:c14n17 <http://www.w3.org/2000/01/rdf-schema#label> "Published" .
+_:c14n8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://purl.org/dc/elements/1.1/description> "First Manifest Test" .
+<> <http://purl.org/dc/terms/isPartOf> <http://localhost:8080/fcrepo/rest/blumenbach/collection/editions> .
+<> <http://purl.org/dc/terms/rights> <http://www.example.org/license.html> .
+<> <http://rdfs.org/sioc/services#has_service> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
+<> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Manifest> .
+<> <http://www.w3.org/2000/01/rdf-schema#label> "Book 1" .
+<> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://www.example.org/library/catalog/book1.marc> .

@@ -1,0 +1,44 @@
+<> <http://iiif.io/api/presentation/2#hasImageAnnotations> _:c14n18 .
+_:c14n18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n12 .
+_:c14n12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/oa#Annotation> .
+_:c14n12 <http://www.w3.org/ns/oa#hasBody> <http://localhost:8080/fcrepo/rest/blumenbach/0001/res/s1.jpg> .
+_:c14n12 <http://www.w3.org/ns/oa#hasTarget> <> .
+_:c14n12 <http://www.w3.org/ns/oa#motivatedBy> <http://iiif.io/api/presentation/2#painting> .
+_:c14n18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://iiif.io/api/presentation/2#hasLists> _:c14n7 .
+_:c14n7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/blumenbach/0001/list/s1> .
+_:c14n7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Canvas> .
+<> <http://www.w3.org/2000/01/rdf-schema#label> "S. 1" .
+<> <http://www.w3.org/2003/12/exif/ns#height> "1000"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<> <http://www.w3.org/2003/12/exif/ns#width> "750"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<> <http://iiif.io/api/presentation/2#hasImageAnnotations> _:c14n15 .
+_:c14n15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n11 .
+_:c14n11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/oa#Annotation> .
+    _:c14n11 <http://www.w3.org/ns/oa#hasBody> <http://localhost:8080/fcrepo/rest/blumenbach/0001/res/s2.jpg> .
+_:c14n11 <http://www.w3.org/ns/oa#hasTarget> <> .
+_:c14n11 <http://www.w3.org/ns/oa#motivatedBy> <http://iiif.io/api/presentation/2#painting> .
+_:c14n15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://iiif.io/api/presentation/2#hasLists> _:c14n14 .
+_:c14n14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/blumenbach/0001/list/s2> .
+_:c14n14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Canvas> .
+<> <http://www.w3.org/2000/01/rdf-schema#label> "S. 2" .
+<> <http://www.w3.org/2003/12/exif/ns#height> "1000"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<> <http://www.w3.org/2003/12/exif/ns#width> "750"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<> <http://iiif.io/api/presentation/2#hasImageAnnotations> _:c14n9 .
+_:c14n9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n0 .
+_:c14n0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/oa#Annotation> .
+_:c14n0 <http://www.w3.org/ns/oa#hasBody> <http://localhost:8080/fcrepo/rest/blumenbach/0001/res/s3.jpg> .
+_:c14n0 <http://www.w3.org/ns/oa#hasTarget> <> .
+_:c14n0 <http://www.w3.org/ns/oa#motivatedBy> <http://iiif.io/api/presentation/2#painting> .
+_:c14n9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://iiif.io/api/presentation/2#hasLists> _:c14n5 .
+_:c14n5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/blumenbach/0001/list/s3> .
+_:c14n5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Canvas> .
+<> <http://www.w3.org/2000/01/rdf-schema#label> "S. 3" .
+<> <http://www.w3.org/2003/12/exif/ns#height> "1000"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<> <http://www.w3.org/2003/12/exif/ns#width> "750"^^<http://www.w3.org/2001/XMLSchema#integer> .

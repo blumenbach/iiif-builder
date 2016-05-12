@@ -1,0 +1,51 @@
+@prefix premis: <http://www.loc.gov/premis/rdf/v1#> .
+@prefix nt: <http://www.jcp.org/jcr/nt/1.0> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns004: <http://www.w3.org/ns/auth/acl#> .
+@prefix ns003: <http://id.loc.gov/vocabulary/relators/> .
+@prefix ns002: <http://purl.org/dc/terms/> .
+@prefix ns001: <http://rdfs.org/sioc/services#> .
+@prefix xsi: <http://www.w3.org/2001/XMLSchema-instance> .
+@prefix sc: <http://iiif.io/api/presentation/2#> .
+@prefix mode: <http://www.modeshape.org/1.0> .
+@prefix ns007: <http://pcdm.org/models#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix ns006: <http://scholarsphere.psu.edu/ns#> .
+@prefix ns005: <info:fedora/fedora-system:def/relations-external#> .
+@prefix blume: <http://purl.org/vocab/blumenbach#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix fedoraconfig: <http://fedora.info/definitions/v4/config#> .
+@prefix mix: <http://www.jcp.org/jcr/mix/1.0> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix image: <http://www.modeshape.org/images/1.0> .
+@prefix sv: <http://www.jcp.org/jcr/sv/1.0> .
+@prefix test: <info:fedora/test/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix fedora: <http://fedora.info/definitions/v4/repository#> .
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema> .
+@prefix exif: <http://www.w3.org/2003/12/exif/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+<http://localhost:8080/fcrepo/rest/editions/00027/res/002.tif> a ldp:NonRDFSource , <http://www.jcp.org/jcr/nt/1.0resource> , <http://www.jcp.org/jcr/mix/1.0mimeType> , fedora:Binary , fedora:Resource ;
+fedora:lastModifiedBy "bypassAdmin"^^<http://www.w3.org/2001/XMLSchema#string> ;
+premis:hasSize "22102433"^^<http://www.w3.org/2001/XMLSchema#long> ;
+ebucore:hasMimeType "image/jpeg"^^<http://www.w3.org/2001/XMLSchema#string> ;
+fedora:createdBy "bypassAdmin"^^<http://www.w3.org/2001/XMLSchema#string> ;
+fedora:created "2016-05-11T07:44:18.016Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+premis:hasMessageDigest <urn:sha1:a0dcd7f9707774408f332bfd679670d741f153a5> ;
+fedora:lastModified "2016-05-11T07:44:18.016Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+ebucore:filename ""^^<http://www.w3.org/2001/XMLSchema#string> ;
+fedora:writable "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+<http://www.iana.org/assignments/relation/describedby> <http://localhost:8080/fcrepo/rest/editions/00027/res/002.tif/fcr:metadata> ;
+fedora:hasParent <http://localhost:8080/fcrepo/rest/editions/00027/res> ;
+fedora:numberOfChildren "0"^^<http://www.w3.org/2001/XMLSchema#int> ;
+fedora:hasFixityService <http://localhost:8080/fcrepo/rest/editions/00027/res/002.tif/fcr:fixity> .
+<> <http://purl.org/dc/elements/1.1/format> "image/jpeg" .
+<> <http://rdfs.org/sioc/services#has_service> <http://localhost:8888/iiif/002> .
+<> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/dcmitype/Image> .
+<> <http://www.w3.org/2003/12/exif/ns#height> "2000"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<> <http://www.w3.org/2003/12/exif/ns#width> "1500"^^<http://www.w3.org/2001/XMLSchema#integer> .
