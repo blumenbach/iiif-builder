@@ -1,22 +1,13 @@
-#!/bin/bash
-if (( $# < 2 )); then
-    id=$1
-fi
-echo "PREFIX premis: <http://www.loc.gov/premis/rdf/v1#>
+PREFIX premis: <http://www.loc.gov/premis/rdf/v1#>
 PREFIX nt: <http://www.jcp.org/jcr/nt/1.0>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ns004: <http://www.w3.org/ns/auth/acl#>
-PREFIX ns003: <http://id.loc.gov/vocabulary/relators/>
-PREFIX ns002: <http://purl.org/dc/terms/>
-PREFIX ns001: <http://rdfs.org/sioc/services#>
+PREFIX svcs: <http://rdfs.org/sioc/services#>
 PREFIX xsi: <http://www.w3.org/2001/XMLSchema-instance>
 PREFIX sc: <http://iiif.io/api/presentation/2#>
 PREFIX mode: <http://www.modeshape.org/1.0>
-PREFIX ns007: <http://pcdm.org/models#>
+PREFIX pcdm: <http://pcdm.org/models#>
 PREFIX oa: <http://www.w3.org/ns/oa#>
 PREFIX xmlns: <http://www.w3.org/2000/xmlns/>
-PREFIX ns006: <http://scholarsphere.psu.edu/ns#>
-PREFIX ns005: <info:fedora/fedora-system:def/relations-external#>
 PREFIX blume: <http://purl.org/vocab/blumenbach#>
 PREFIX xml: <http://www.w3.org/XML/1998/namespace>
 PREFIX fedoraconfig: <http://fedora.info/definitions/v4/config#>
@@ -35,9 +26,9 @@ PREFIX exif: <http://www.w3.org/2003/12/exif/ns#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
 INSERT { 
-<> <http://purl.org/dc/elements/1.1/format> \"image/jpeg\" .
-<> <http://rdfs.org/sioc/services#has_service> <http://localhost:8888/iiif/$id> .
+<> <http://purl.org/dc/elements/1.1/format> "image/jpeg" .
+<> <http://rdfs.org/sioc/services#has_service> <http://localhost:8888/iiif/base/001> .
 <> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/dcmitype/Image> .
-<> <http://www.w3.org/2003/12/exif/ns#height> \"2112\"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<> <http://www.w3.org/2003/12/exif/ns#width> \"3314\"^^<http://www.w3.org/2001/XMLSchema#integer> .
-} WHERE {}" > "$id.ttl"
+<> <http://www.w3.org/2003/12/exif/ns#height> "2112"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<> <http://www.w3.org/2003/12/exif/ns#width> "3314"^^<http://www.w3.org/2001/XMLSchema#integer> .
+} WHERE {}

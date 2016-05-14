@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@001.ttl" "http://localhost:8080/fcrepo/rest/editions/00027/res/001.tif/fcr:metadata"
 curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@002.ttl" "http://localhost:8080/fcrepo/rest/editions/00027/res/002.tif/fcr:metadata"
 curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@003.ttl" "http://localhost:8080/fcrepo/rest/editions/00027/res/003.tif/fcr:metadata"

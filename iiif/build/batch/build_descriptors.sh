@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ./create_descriptor.sh 001
 ./create_descriptor.sh 002
 ./create_descriptor.sh 003

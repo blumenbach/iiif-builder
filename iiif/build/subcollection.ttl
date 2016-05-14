@@ -1,14 +1,12 @@
-PREFIX premis: <http://www.loc.gov/premis/rdf/v1#>
-PREFIX nt: <http://www.jcp.org/jcr/nt/1.0>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ns001: <info:fedora/fedora-system:def/model#>
-PREFIX ns002: <http://purl.org/dc/terms/>
 PREFIX ns003: <http://id.loc.gov/vocabulary/relators/>
 PREFIX ns004: <http://www.w3.org/ns/auth/acl#>
 PREFIX ns005: <info:fedora/fedora-system:def/relations-external#>
 PREFIX ns006: <http://scholarsphere.psu.edu/ns#>
-PREFIX ns007: <http://pcdm.org/models#>
-PREFIX svcs: <http://rdfs.org/sioc/services#>
+PREFIX premis: <http://www.loc.gov/premis/rdf/v1#>
+PREFIX nt: <http://www.jcp.org/jcr/nt/1.0>
+PREFIX pcdm: <http://pcdm.org/models#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsi: <http://www.w3.org/2001/XMLSchema-instance>
 PREFIX sc: <http://iiif.io/api/presentation/2#>
 PREFIX mode: <http://www.modeshape.org/1.0>
@@ -16,6 +14,8 @@ PREFIX oa: <http://www.w3.org/ns/oa#>
 PREFIX xmlns: <http://www.w3.org/2000/xmlns/>
 PREFIX blume: <http://purl.org/vocab/blumenbach#>
 PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX jcr: <http://www.jcp.org/jcr/1.0>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX fedoraconfig: <http://fedora.info/definitions/v4/config#>
 PREFIX mix: <http://www.jcp.org/jcr/mix/1.0>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -23,6 +23,7 @@ PREFIX dctypes: <http://purl.org/dc/dcmitype/>
 PREFIX image: <http://www.modeshape.org/images/1.0>
 PREFIX sv: <http://www.jcp.org/jcr/sv/1.0>
 PREFIX test: <info:fedora/test/>
+PREFIX svcs: <http://rdfs.org/sioc/services#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX fedora: <http://fedora.info/definitions/v4/repository#>
 PREFIX ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#>
@@ -32,17 +33,11 @@ PREFIX exif: <http://www.w3.org/2003/12/exif/ns#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
 INSERT {<> <http://iiif.io/api/presentation/2#attributionLabel> "Provided by Akademie der Wissenschaften zu Göttingen" .
-<> <http://iiif.io/api/presentation/2#hasCollections> _:c14n0 .
 <> <http://iiif.io/api/presentation/2#hasManifests> _:c14n2 .
-_:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/iiif/book1/manifest> .
+_:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/manifest> .
 _:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-<> <http://purl.org/dc/elements/1.1/description> "Blumenbach Collections" .
+<> <http://purl.org/dc/elements/1.1/description> "Blumenbach Editions" .
 <> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Collection> .
-<> <http://www.w3.org/2000/01/rdf-schema#label> "Top Level Collection for Projekt Blumenbach" .
-_:c14n0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/collection/blumenbach-editions> .
-_:c14n0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c14n1 .
-_:c14n1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/collection/blumenbach-objects> .
-_:c14n1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-
+<> <http://www.w3.org/2000/01/rdf-schema#label> "Collection of Blumenbach Editions" .
 
 } WHERE {}

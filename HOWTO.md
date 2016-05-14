@@ -71,31 +71,35 @@ Example:
 URI pattern:  
 <http://localhost:8080/fcrepo/rest/edition/{id}/list/l{list_id}>
 - Use create_list_objects.sh script
+`./containers/create_lists.sh {$start} {$end}`
 
 ### 9. Create canvas objects
 - This is the same as the list creation.  
 URI pattern:   
-<http://localhost:8080/fcrepo/rest/edition/{edition_id}/canvas/c{canvas_id}>
+<http://localhost:8080/fcrepo/rest/edition/{edition_id}/canvas/c{canvas_id}>  
+`./build/containers/create_canvases.sh {$start} {$end}`
 
 ### 10. create canvas metadata (RDF)
-- same as step 4 but use `./canvas_metadata.sh`
+- same as step 4 but use 
+`./metadata/canvas_metadata.sh {$id}` 
 - save as build_canvas_ttl.sh
 
 ### 11. Patch canvas metadata
-- use script `update_canvas_metadata.sh`  
+ `update_canvas_metadata.sh {$start} {$end}`  
 Example:  
 `curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@002.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/canvas/c002"`
 
 ### 12. Create sequence metadata (RDF)
-- Use the script build/sequence_metadata.php
-- append prefixes and SPARQL statement in output file (sequence.ttl)
-- include before sequence chain this statement!  
+- Use the script build/sequence_metadata.php  
+`php ./metadata/sequence_metadata.php {$start} {$end}`
+- Note: Prefixes and SPARQL INSERT are appended before the sequence chain   
+Example:    
 ```sparql
 INSERT { 
- <> <http://iiif.io/api/presentation/2#hasCanvases> _:c002 .
+ <> <http://iiif.io/api/presentation/2#hasCanvases> _:c000 .
 ```
 
-### 13. Patch sequence object
+### 13. Create and Patch sequence object
 - default sequence has path "http://localhost:8080/fcrepo/rest/edition/{id}/sequence/normal"  
 Example:    
 `curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@sequence.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/sequence/normal"`
@@ -104,22 +108,25 @@ Example:
 - a manual process that involves partitioning the canvases based on the textual divisions (chapters, etc.)
 - sequence.ttl can be reused for this purpose because the node chain is the same.
 
-### 15. Create Manifest Object
-`curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/{id}/manifest"`
-
-### 16. Edit manifest metadata (RDF) template
-- template file is manifest.ttl
-
-### 17. Patch manifest metadata (RDF)
-`curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@manifest.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/manifest"`
-
-### 18. Create collection and subcollection objects
+### 15. Create collection and subcollection objects
+- `curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection"`
 - `curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection/top"`
 - `curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection/blumenbach-editions"`
 - `curl -i -X PUT "http://localhost:8080/fcrepo/rest/collection/blumenbach-objects"`
 
-### 19. Edit collection metadata (RDF) template
-- template file is collection.ttl
+### 16. Create Manifest Object
+`curl -i -X PUT "http://localhost:8080/fcrepo/rest/edition/{id}/manifest"`
 
-### 20. Patch collection metadata
+### 17. Edit collection metadata (RDF) template
+- template file is `./metadata/collection.ttl`
+
+### 18. Patch collection metadata
 - `curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@collection.ttl" "http://localhost:8080/fcrepo/rest/collection/top"`
+
+### 19. Edit manifest metadata (RDF) template
+- template file is `./metadata/manifest.ttl`
+
+### 20. Patch manifest metadata (RDF)
+`curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@manifest.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/manifest"`
+
+

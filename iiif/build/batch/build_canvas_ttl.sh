@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ./canvas_metadata.sh 002
 ./canvas_metadata.sh 003
 ./canvas_metadata.sh 004

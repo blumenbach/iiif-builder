@@ -1,14 +1,3 @@
-#!/bin/bash
-if (( $# < 2 )); then
-    id=$1
-fi
-echo "PREFIX ns001: <info:fedora/fedora-system:def/model#>
-PREFIX ns002: <http://purl.org/dc/terms/>
-PREFIX ns003: <http://id.loc.gov/vocabulary/relators/>
-PREFIX ns004: <http://www.w3.org/ns/auth/acl#>
-PREFIX ns005: <info:fedora/fedora-system:def/relations-external#>
-PREFIX ns006: <http://scholarsphere.psu.edu/ns#>
-PREFIX ns007: <http://pcdm.org/models#>
 PREFIX premis: <http://www.loc.gov/premis/rdf/v1#>
 PREFIX nt: <http://www.jcp.org/jcr/nt/1.0>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -16,6 +5,7 @@ PREFIX svcs: <http://rdfs.org/sioc/services#>
 PREFIX xsi: <http://www.w3.org/2001/XMLSchema-instance>
 PREFIX sc: <http://iiif.io/api/presentation/2#>
 PREFIX mode: <http://www.modeshape.org/1.0>
+PREFIX pcdm: <http://pcdm.org/models#>
 PREFIX oa: <http://www.w3.org/ns/oa#>
 PREFIX xmlns: <http://www.w3.org/2000/xmlns/>
 PREFIX blume: <http://purl.org/vocab/blumenbach#>
@@ -39,15 +29,15 @@ INSERT {
 <> <http://iiif.io/api/presentation/2#hasImageAnnotations> _:c14n18 .
 _:c14n18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:c14n12 .
 _:c14n12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/oa#Annotation> .
-_:c14n12 <http://www.w3.org/ns/oa#hasBody> <http://localhost:8080/fcrepo/rest/edition/00027/res/$id.tif> .
+_:c14n12 <http://www.w3.org/ns/oa#hasBody> <http://localhost:8080/fcrepo/rest/edition/base/res/003.tif> .
 _:c14n12 <http://www.w3.org/ns/oa#hasTarget> <> .
 _:c14n12 <http://www.w3.org/ns/oa#motivatedBy> <http://iiif.io/api/presentation/2#painting> .
 _:c14n18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 <> <http://iiif.io/api/presentation/2#hasLists> _:c14n7 .
-_:c14n7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/00027/list/l$id> .
+_:c14n7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/list/l003> .
 _:c14n7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 <> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Canvas> .
-<> <http://www.w3.org/2000/01/rdf-schema#label> \"S. $id\" .
-<> <http://www.w3.org/2003/12/exif/ns#height> \"2112\"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<> <http://www.w3.org/2003/12/exif/ns#width> \"3314\"^^<http://www.w3.org/2001/XMLSchema#integer> .
-} WHERE {}" > "$id.ttl"
+<> <http://www.w3.org/2000/01/rdf-schema#label> "S. 003" .
+<> <http://www.w3.org/2003/12/exif/ns#height> "2112"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<> <http://www.w3.org/2003/12/exif/ns#width> "3314"^^<http://www.w3.org/2001/XMLSchema#integer> .
+} WHERE {}

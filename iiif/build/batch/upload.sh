@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 curl -X PUT --upload-file 002.tif -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/editions/00027/res/002.tif"
 curl -X PUT --upload-file 003.tif -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/editions/00027/res/003.tif"
 curl -X PUT --upload-file 004.tif -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/editions/00027/res/004.tif"
