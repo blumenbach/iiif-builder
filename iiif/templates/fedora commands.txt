@@ -3,3 +3,4 @@ curl -i -X PUT "http://localhost:8080/fcrepo/rest/blumenbach/0001/canvas/s1"
 curl -i -X POST -H "Content-Type: text/turtle" --data-binary "@createnewnodewithproperties.rdf" "http://localhost:8080/fcrepo/rest/blumenbach/0001/canvas/s1"
 DELETE tombstone
 curl -i -XDELETE  http://localhost:8080/fcrepo/rest/collection/fcr:tombstone
+curl -X MOVE -H "Destination: http://localhost:8080/rest/new/path/to/resource" "http://localhost:8080/rest/path/to/resource"

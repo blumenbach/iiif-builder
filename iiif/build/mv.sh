@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 mv 00000001.tif 001.tif
 mv 00000002.tif 002.tif
 mv 00000003.tif 003.tif
@@ -765,4 +766,3 @@ mv 00000764.tif 764.tif
 mv 00000765.tif 765.tif
 mv 00000766.tif 766.tif
 mv 00000767.tif 767.tif
-tiffs.csv
