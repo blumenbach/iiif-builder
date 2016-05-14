@@ -7,6 +7,6 @@ fi
 ids=($(seq -w -s' ' $start $end))
 for id in "${ids[@]}"
 do
-curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@$id.ttl" "http://localhost:8080/fcrepo/rest/edition/base/canvas/c$id"
+curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@c$id.ttl" "http://localhost:8080/fcrepo/rest/edition/base/canvas/c$id"
 done
 

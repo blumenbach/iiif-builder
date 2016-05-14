@@ -36,15 +36,23 @@ URI Pattern: <http://localhost:8080/fcrepo/rest/edition/{id}/{container}>
 ### 4. Create binary metadata (RDF)
 - check image dimensions (i.e. 2112 x 3314)
 - use the script res_metadata.sh by piping in the ids of all of the files.  
-Create the batch script:
-- ls > list.txt
-- open list.txt 
--- Find: (.+?)(.tif)\n
--- Replace: ./res_metadata.sh $1\n
-- save as build_res_ttl.sh
-
+- This will create 1 .ttl file for each binary.
+- Create the batch script:
+  - ls *.ttl > list.txt
+  - open list.txt   
+  -- Find: (.+?)(.tif)\n  
+  -- Replace:  
+   `./res_metadata.sh $1\n`
+  - save as build_res_ttl.sh
+  
 ### 5. Patch binary metadata
-`curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@{res_id}.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/res/{res_id}.tif/fcr:metadata"`
+- Create the batch script:
+  - ls *.ttl > ttl_bin.txt
+  - open ttl_bin.txt  
+  -- Find: (.+?)(.ttl)\n  
+  -- Replace: 
+  `curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@$1.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/res/$1.tif/fcr:metadata" \n` 
+  - save as update_res_metadata.sh
 
 Note: If a property exists, you must first delete it before you use SPARQL update!
 
@@ -57,8 +65,12 @@ DELETE {
 ```
 
 ### 6. Create xml file descriptors
-- file descriptor has one element <id>{edition_id}/001</id> that is used by the IIIF server for the URI
-- use build_descriptors.sh then move the descriptors into the binary directory (/media/fcrepo/edition/{edition_id}/res
+- file descriptor has one element  
+```xml 
+<id>{edition_id}/001</id>
+```  
+ that is used by the IIIF server for the URI
+- use build_descriptors.sh then move the descriptors into the binary directory (/media/fcrepo/edition/{edition_id}/res)
 
 ### 7. Ingest images into Djatoka
 `curl -s 'http://localhost:8888/ingest?unattended=true'`
@@ -100,7 +112,7 @@ INSERT {
 ```
 
 ### 13. Create and Patch sequence object
-- default sequence has path "http://localhost:8080/fcrepo/rest/edition/{id}/sequence/normal"  
+- default sequence has path <http://localhost:8080/fcrepo/rest/edition/{id}/sequence/normal>  
 Example:    
 `curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@sequence.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/sequence/normal"`
 

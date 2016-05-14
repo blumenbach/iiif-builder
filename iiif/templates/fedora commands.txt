@@ -4,3 +4,5 @@ curl -i -X POST -H "Content-Type: text/turtle" --data-binary "@createnewnodewith
 DELETE tombstone
 curl -i -XDELETE  http://localhost:8080/fcrepo/rest/collection/fcr:tombstone
 curl -X MOVE -H "Destination: http://localhost:8080/rest/new/path/to/resource" "http://localhost:8080/rest/path/to/resource"
+REINDEX TRIPLESTORE
+curl -XPOST localhost:9080/reindexing -H"Content-Type: application/json" -d '["activemq:queue:triplestore.reindex"]'
