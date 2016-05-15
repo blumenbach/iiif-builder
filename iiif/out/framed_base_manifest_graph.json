@@ -1,0 +1,91 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@graph": [
+    {
+      "@id": "http://localhost:8080/fcrepo/rest/edition/base/manifest",
+      "@type": "sc:Manifest",
+      "sc:hasRanges": null,
+      "sc:hasSequences": {
+        "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/97/06/e5/d1/9706e5d1-7d41-4303-9e61-f8ee82dc50f4",
+        "rdf:first": {
+          "@id": "http://localhost:8080/fcrepo/rest/edition/base/sequence/normal",
+          "@type": "sc:Sequence",
+          "sc:hasCanvases": {
+            "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/3c/cb/53/d9/3ccb53d9-fe41-4ea9-bc76-f646526bda59",
+            "rdf:first": {
+              "@id": "http://localhost:8080/fcrepo/rest/edition/base/canvas/c001",
+              "sc:hasImageAnnotations": {
+                "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/80/a5/c3/30/80a5c330-95d9-4659-a882-d23f05f9172f",
+                "rdf:first": {
+                  "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/e4/ce/40/62/e4ce4062-abb5-41bf-b9c9-64b4cb907670",
+                  "@type": "oa:Annotation",
+                  "resource": {
+                    "@id": "http://localhost:8080/fcrepo/rest/edition/base/res/001.tif",
+                    "service": "http://localhost:8888/iiif/base/001"
+                  }
+                }
+              },
+              "sc:hasLists": {
+                "@id": "http://localhost:8080/fcrepo/rest/edition/base/list/l001"
+              },
+              "exif:height": 2112,
+              "exif:width": 3314
+            },
+            "rdf:rest": [
+              {
+                "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/cb/bc/2e/d9/cbbc2ed9-fc73-460b-965b-1df3027781e4",
+                "rdf:first": {
+                  "@id": "http://localhost:8080/fcrepo/rest/edition/base/canvas/c002",
+                  "@type": "sc:Canvas",
+                  "images": [
+                    {
+                      "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/d6/70/bf/c4/d670bfc4-ed68-404d-8ee9-7134d46ad380",
+                      "@type": "oa:Annotation",
+                      "resource": {
+                        "@id": "http://localhost:8080/fcrepo/rest/edition/base/res/002.tif",
+                        "service": "http://localhost:8888/iiif/base/002"
+                      }
+                    }
+                  ],
+                  "sc:hasLists": {
+                    "@id": "http://localhost:8080/fcrepo/rest/edition/base/list/l002"
+                  },
+                  "exif:height": 2112,
+                  "exif:width": 3314
+                },
+                "rdf:rest": {
+                  "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/3f/c3/f4/b7/3fc3f4b7-74f2-4a51-842c-42ffc7b3863e"
+                }
+              },
+              {
+                "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/3c/cb/53/d9/3ccb53d9-fe41-4ea9-bc76-f646526bda59"
+              },
+              {
+                "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/3f/c3/f4/b7/3fc3f4b7-74f2-4a51-842c-42ffc7b3863e",
+                "rdf:first": {
+                  "@id": "http://localhost:8080/fcrepo/rest/edition/base/canvas/c003",
+                  "@type": "sc:Canvas",
+                  "images": [
+                    {
+                      "@id": "http://localhost:8080/fcrepo/rest/.well-known/genid/c4/26/02/79/c4260279-7023-416e-a94a-b39b42e2699a",
+                      "@type": "oa:Annotation",
+                      "resource": {
+                        "@id": "http://localhost:8080/fcrepo/rest/edition/base/res/003.tif",
+                        "service": "http://localhost:8888/iiif/base/003"
+                      }
+                    }
+                  ],
+                  "sc:hasLists": {
+                    "@id": "http://localhost:8080/fcrepo/rest/edition/base/list/l003"
+                  },
+                  "exif:height": 2112,
+                  "exif:width": 3314
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
