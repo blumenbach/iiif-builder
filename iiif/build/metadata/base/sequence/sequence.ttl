@@ -32,12 +32,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX svcs: <http://rdfs.org/sioc/services#>
 PREFIX as: <http://www.w3.org/ns/activitystreams#>
 
-INSERT {<> <http://iiif.io/api/presentation/2#attributionLabel> "Provided by Akademie der Wissenschaften zu Göttingen" .
-<> <http://iiif.io/api/presentation/2#hasManifests> _:c14n2 .
-_:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/manifest> .
-_:c14n2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-<> <http://purl.org/dc/elements/1.1/description> "Blumenbach Editions" .
-<> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/2#Collection> .
-<> <http://www.w3.org/2000/01/rdf-schema#label> "Collection of Blumenbach Editions" .
-
+INSERT { 
+ <> <http://iiif.io/api/presentation/2#hasCanvases> _:c11 .
+_:c11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/canvas/c000> .
+_:c11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c001.
+_:c001 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/canvas/c001> .
+_:c001 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c003.
+_:c003 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/canvas/c002> .
+_:c003 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c005.
+_:c005 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/canvas/c003> .
+_:c005 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c007.
 } WHERE {}

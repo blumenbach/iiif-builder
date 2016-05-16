@@ -4,7 +4,8 @@
 - fcrepo serialization should be installed in karaf.  
 - enable saving binaries to a directory accessible to djatoka (/media/fcrepo).
 
-### 1. Create Containers in Fedora for the edition objects:  
+### 1. Create Containers in Fedora for the edition objects: 
+ if it does not exist, create top container ("edition") first
  - root
 - canvas
 - sequence
@@ -14,7 +15,7 @@
 - layer
 - res  
 URI Pattern: <http://localhost:8080/fcrepo/rest/edition/{id}/{container}>  
-`./create_base_objects.sh {id}`
+`./containers/create_base_objects.sh {id}`
  
 ### 2. stage TIFF files in a CLI accessible directory. (/media/staged/{id})
 - Create upload script with this process.
@@ -27,7 +28,7 @@ URI Pattern: <http://localhost:8080/fcrepo/rest/edition/{id}/{container}>
 -- open mv.sh in editor
 - d: add curl command with this regex:
 -- Find: mv 00000(\d{3}.tif) .+?(tif)
--- Replace: curl -X PUT --upload-file $1 -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/edition/00027/res/$1"
+-- Replace: curl -X PUT --upload-file $1 -H"Content-Type: image/jpeg" "http://localhost:8080/fcrepo/rest/edition/{id}/res/$1"
 - save as upload.sh, chmod 755 upload.sh
 
 ### 3. Upload binaries to Fedora res container
@@ -35,14 +36,15 @@ URI Pattern: <http://localhost:8080/fcrepo/rest/edition/{id}/{container}>
 
 ### 4. Create binary metadata (RDF)
 - check image dimensions (i.e. 2112 x 3314)
-- use the script res_metadata.sh by piping in the ids of all of the files.  
+- make a subdirectory tree under metadata for the ttl files (./metadata/base/res)
+- use the script res_metadata.sh by piping in the ids of all of the files.
 - This will create 1 .ttl file for each binary.
 - Create the batch script:
-  - ls *.ttl > list.txt
+  - ls *.tif > list.txt
   - open list.txt   
   -- Find: (.+?)(.tif)\n  
   -- Replace:  
-   `./res_metadata.sh $1\n`
+   `../../res_metadata.sh $1\n`
   - save as build_res_ttl.sh
   
 ### 5. Patch binary metadata
@@ -67,7 +69,7 @@ DELETE {
 ### 6. Create xml file descriptors
 - file descriptor has one element  
 ```xml 
-<id>{edition_id}/001</id>
+<id>{edition_id}_001</id>
 ```  
  that is used by the IIIF server for the URI
 - use build_descriptors.sh then move the descriptors into the binary directory (/media/fcrepo/edition/{edition_id}/res)
@@ -93,7 +95,7 @@ URI pattern:
 
 ### 10. create canvas metadata (RDF)
 - same as step 4 but use 
-`./metadata/canvas_metadata.sh {$id}` 
+`../../canvas_metadata.sh {$id}` 
 - save as build_canvas_ttl.sh
 
 ### 11. Patch canvas metadata
@@ -139,6 +141,6 @@ Example:
 - template file is `./metadata/manifest.ttl`
 
 ### 20. Patch manifest metadata (RDF)
-`curl -X PATCH -H "Content-Type: application/sparql-update" --data-binary "@manifest.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/manifest"`
+`curl -X PATCH -H "Content-Type: application/sparql-update; charset=utf-8" --data-binary "@manifest.ttl" "http://localhost:8080/fcrepo/rest/edition/{id}/manifest"`
 
 
