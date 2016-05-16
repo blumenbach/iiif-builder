@@ -42,4 +42,6 @@ _:c003 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080
 _:c003 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c005.
 _:c005 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/canvas/c003> .
 _:c005 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:c007.
+_:c007 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8080/fcrepo/rest/edition/base/canvas/c004> .
+_:c008 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
 } WHERE {}
