@@ -14,22 +14,25 @@ CONSTRUCT {<http://localhost:8080/fcrepo/rest/edition/00027/manifest> sc:hasSequ
 ?sequence rdf:type sc:Sequence .
 ?sequence sc:hasCanvases ?canvaslistid .
 ?canvaslistid  rdf:first ?first .
+?first rdf:type sc:Canvas .
+?first rdfs:label ?firstlabel .
+?first exif:height ?height .
+?first exif:width ?width .
 ?first sc:hasImageAnnotations ?firstanno .
 ?firstanno rdf:first ?firstresid .
 ?firstresid rdf:type oa:Annotation.
 ?firstresid  oa:hasBody ?firstimage .
 ?firstimage svcs:has_service ?firstservice .
 ?firstimage rdf:type dctypes:Image .
-?first exif:height ?height .
-?first exif:width ?width .
 ?first sc:hasLists ?firstlist .
 ?canvas rdf:type sc:Canvas .
+?canvas rdfs:label ?canvaslabel .
+?canvas exif:height ?height  .
+?canvas exif:width ?width  .
 ?canvaslistid rdf:rest ?mid .
 ?mid rdf:rest ?node .
 ?node rdf:first ?canvas .
 ?canvas sc:hasImageAnnotations ?annoid  .
-?canvas exif:height ?height  .
-?canvas exif:width ?width  .
 ?canvas sc:hasLists ?list .
 ?annoid rdf:first ?resid .
 ?resid rdf:type oa:Annotation.
@@ -47,6 +50,7 @@ values ?e { rdf:first rdf:rest }
 ?canvaslistid rdf:first ?first .
 ?first sc:hasImageAnnotations ?firstanno .
 ?first sc:hasLists ?firstlistid .
+?first rdfs:label ?firstlabel .
 ?firstlistid rdf:first ?firstlist .
 ?firstanno rdf:first ?firstresid .
 ?firstresid  oa:hasBody ?firstimage .
@@ -56,6 +60,7 @@ values ?e { rdf:first rdf:rest }
 ?node rdf:first ?canvas .
 ?canvas sc:hasImageAnnotations ?annoid .
 ?canvas sc:hasLists ?listid .
+?canvas rdfs:label ?canvaslabel .
 ?listid rdf:first ?list .
 ?canvas exif:height ?height .
 ?canvas exif:width ?width .
@@ -64,4 +69,4 @@ values ?e { rdf:first rdf:rest }
 ?image svcs:has_service ?service .
 ?annoid  rdf:rest ?rest}
 group by ?node ?canvas ?image ?canvaslistid ?mid ?annoid ?resid ?rest ?seqid ?sequence ?first ?height ?width ?firstimage
-?firstresid ?firstanno ?firstlist ?list ?service ?firstservice ORDER BY (?canvas) LIMIT 15
+?firstresid ?firstanno ?firstlist ?list ?service ?firstservice ?canvaslabel ?firstlabel ORDER BY (?canvas) LIMIT 15
